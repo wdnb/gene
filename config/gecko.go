@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"github.com/wdnb/blockchain-tutorial/gecko/gecko"
+	"github.com/wdnb/gene/gecko"
 	"time"
 )
 

@@ -8,7 +8,7 @@ import (
 	"crypto/sha256"
 	"math/big"
 	"strings"
-	"github.com/wdnb/blockchain-tutorial/gecko/wallet"
+	"github.com/wdnb/gene/wallet"
 	"encoding/gob"
 	"encoding/hex"
 	"fmt"

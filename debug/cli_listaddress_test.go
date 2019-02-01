@@ -3,7 +3,7 @@ package debug
 import (
 	"fmt"
 	"github.com/joho/godotenv"
-	"github.com/wdnb/blockchain-tutorial/gecko/wallet"
+	"github.com/wdnb/gene/wallet"
 	"log"
 	"os"
 	"testing"

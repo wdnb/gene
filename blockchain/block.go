@@ -3,7 +3,7 @@ package blockchain
 import (
 	"bytes"
 	"encoding/gob"
-	"github.com/wdnb/blockchain-tutorial/gecko/gecko"
+	"github.com/wdnb/gene/gecko"
 	"log"
 	"time"
 )

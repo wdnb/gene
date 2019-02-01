@@ -2,7 +2,7 @@ package debug
 
 import (
 	"encoding/hex"
-	"github.com/wdnb/blockchain-tutorial/gecko/wallet"
+	"github.com/wdnb/gene/wallet"
 	"log"
 	"strings"
 	"testing"

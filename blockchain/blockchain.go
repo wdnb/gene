@@ -5,13 +5,13 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/wdnb/blockchain-tutorial/gecko/gecko"
+	"github.com/wdnb/gene/gecko"
 	"log"
 	"os"
 	"github.com/boltdb/bolt"
 )
 
-//const dbFile = "D:/workspace/go/src/github.com/wdnb/blockchain-tutorial/gecko/db/blockchain_%s.db"
+//const dbFile = "D:/workspace/go/src/github.com/wdnb/gene/db/blockchain_%s.db"
 const dbFile = "./db/blockchain_%s.db"
 const blocksBucket = "blocks"
 const genesisCoinbaseData = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"

@@ -1,8 +1,8 @@
 package debug
 
 import (
-	//"github.com/wdnb/blockchain-tutorial/gecko/blockchain"
-	"github.com/wdnb/blockchain-tutorial/gecko/blockchain"
+	//"github.com/wdnb/gene/blockchain"
+	"github.com/wdnb/gene/blockchain"
 	"testing"
 )
 

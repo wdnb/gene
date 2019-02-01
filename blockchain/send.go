@@ -2,7 +2,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/wdnb/blockchain-tutorial/gecko/wallet"
+	"github.com/wdnb/gene/wallet"
 	"log"
 )
 func Send(from, to string, amount int, nodeID string, mineNow bool) {

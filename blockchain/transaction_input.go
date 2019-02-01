@@ -2,7 +2,7 @@ package blockchain
 
 import (
 	"bytes"
-	"github.com/wdnb/blockchain-tutorial/gecko/wallet"
+	"github.com/wdnb/gene/wallet"
 )
 
 // TXInput represents a transaction input

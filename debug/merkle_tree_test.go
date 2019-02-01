@@ -3,7 +3,7 @@ package debug
 import (
 	"encoding/hex"
 	"fmt"
-	"github.com/wdnb/blockchain-tutorial/gecko/blockchain"
+	"github.com/wdnb/gene/blockchain"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/wdnb/blockchain-tutorial/gecko/gecko"
+	"github.com/wdnb/gene/gecko"
 	"io/ioutil"
 	"encoding/json"
 	"fmt"

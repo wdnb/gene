@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/wdnb/blockchain-tutorial/gecko/api"
+	"github.com/wdnb/gene/api"
 	"log"
 )
 

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
-	"github.com/wdnb/blockchain-tutorial/gecko/blockchain"
-	"github.com/wdnb/blockchain-tutorial/gecko/gecko"
+	"github.com/wdnb/gene/blockchain"
+	"github.com/wdnb/gene/gecko"
 	"net/http"
 )
 

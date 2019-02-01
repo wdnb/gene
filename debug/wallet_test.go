@@ -1,7 +1,7 @@
 package debug
 
 import (
-	"github.com/wdnb/blockchain-tutorial/gecko/wallet"
+	"github.com/wdnb/gene/wallet"
 	"testing"
 )
 
