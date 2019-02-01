@@ -1,0 +1,21 @@
+{
+  "Weight": "",
+  "Height": 222,
+  "From": {
+    "Father": "",
+    "Mother": "",
+    "Temperature": null,
+    "Birth": "0001-01-01T00:00:00Z",
+    "Death": "0001-01-01T00:00:00Z",
+    "Hash": ""
+  },
+  "Estrus": "0001-01-01T00:00:00Z",
+  "Mating": null,
+  "Baby": null,
+  "Lasteat": "0001-01-01T00:00:00Z",
+  "Sex": "",
+  "Geng": null,
+  "Birth": "0001-01-01T00:00:00Z",
+  "Death": "0001-01-01T00:00:00Z",
+  "Hash": "ssssss"
+}
