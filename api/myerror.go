@@ -29,9 +29,6 @@ func ErrorRepsonse(code int,msg string) interface{} {
 		"code":code,
 		"msg":msg,
 	}
-	//jsonData, _ :=json.Marshal(data)
-	//fmt.Println(string(jsonData))
 	return data
-	//return string(jsonData)
 }
 

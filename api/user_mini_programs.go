@@ -3,9 +3,13 @@ package api
 import (
 	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
+	"github.com/wdnb/gene/blockchain"
+	"github.com/wdnb/gene/wallet"
 	"net/http"
 	"regexp"
 )
+
+//var guname string
 
 type User struct {
 	UserName string    `json:"username" valid:"required~请输入用户名,uname~用户名可以为 英文字符区分大小写 数字 下划线 长度3到28之间"`
@@ -56,15 +60,22 @@ func Register(c *gin.Context) {
 	err := udb.IsExist(user)
 	defer udb.db.Close()
 	if err == nil {
-		response(c, http.StatusForbidden, "the user was exist")
+		response(c, http.StatusForbidden, "user was exist")
 		return
 	}
+	//生成用户钱包
+	address := wallet.CreateWallet(user.UserName)
 	//用户注册
-	err = udb.Insert(user)
+	err = udb.Insert(user,address)
 	if err != nil {
 		response(c, http.StatusInternalServerError, "internal error")
 		return
 	}
+
+	//生成用户子区块链数据库
+	//子区块数据由用户决定是否传往主库
+	blockchain.CcreateBlockchain(address,user.UserName)
+
 	response(c,http.StatusOK,"注册成功")
 	//c.Handler()
 	return
@@ -72,6 +83,8 @@ func Register(c *gin.Context) {
 
 func Login(c *gin.Context) {
 	var user UserName
+	//guname = user.UserName
+	//c.Set("uname",user.UserName)
 	if c.BindJSON(&user) != nil {
 		response(c,http.StatusBadRequest,"request's params wrong!")
 		return
@@ -90,13 +103,14 @@ func Login(c *gin.Context) {
 		token, _ := GenerateToken(&user)
 		response(c,http.StatusOK,JwtToken{Token: token})
 	} else {
-		response(c, http.StatusForbidden, "the user not exist")
+		response(c, http.StatusForbidden, "user not exist")
 	}
 	return
 }
 
 //查询用户信息 返回用户信息
 func Inquire(c *gin.Context) {
+	//c.Set("uname","Inquire")
 	var openid UserName
 	if c.BindJSON(&openid) != nil {
 		response(c,http.StatusBadRequest,"request's params wrong!")
@@ -113,7 +127,7 @@ func Inquire(c *gin.Context) {
 	udb.db.Close()
 
 	if err != nil {
-		response(c, http.StatusForbidden, "the user not exist")
+		response(c, http.StatusForbidden, "user not exist")
 		return
 	}
 	response(c,http.StatusOK,"用户已注册")

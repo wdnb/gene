@@ -34,9 +34,7 @@ func EntryGecko(from,nodeID string, mineNow bool,msg gecko.Gecko) {
 	if err != nil {
 		log.Panic(err)
 	}
-	//os.Exit(1)
 	w := wallets.GetWallet(from)
-	//os.Exit(1)
 
 	//tx := NewUTXOTransaction(&w, to, amount, &UTXOSet)
 	gtx :=NewGecko(&w,msg)//填充结构体
@@ -50,7 +48,7 @@ func EntryGecko(from,nodeID string, mineNow bool,msg gecko.Gecko) {
 		//fmt.Println(geckos)
 		//fmt.Println(txs)
 		//gecko.
-		fmt.Println(geckos)
+		//fmt.Println(geckos)
 		bc.MineBlock(txs,geckos)
 		//更新gecko block
 		//UTXOSet.Update(newBlock)

@@ -39,7 +39,6 @@ func NewMerkleTree(data [][]byte) *MerkleTree {
 
 		nodes = newLevel
 	}
-
 	mTree := MerkleTree{&nodes[0]}
 
 	return &mTree

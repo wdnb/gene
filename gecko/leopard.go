@@ -37,20 +37,37 @@ type Care struct {
 }
 
 type Gecko struct {
+	Gene map[string]interface{}
 	BMI
 	Egg
 	//Reproduction
 	//Care
 	Name		string
 	Sex			string `valid:"in(male|female|unknown)"`
-	//Geng
 	Birth   int64
 	Death  int64
 	PubKeyHash []byte
 	//Unique      string `valid:"required"`
 }
+type G struct {
+	Gene map[string]interface{}
+
+	Sex			string `valid:"in(male|female|unknown)"`
+	//Birth   int64
+	//Death  int64
+	PubKeyHash []byte
+	//Unique      string `valid:"required"`
+}
 
 
+//type Gen struct {
+//	SSDB bool
+//	SDB bool
+//	NM bool
+//	DB bool
+//	RS bool
+//	SB bool
+//}
 
 //type Print struct {
 //	Hash []byte

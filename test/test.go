@@ -1,4 +1,4 @@
-package config
+package test
 
 import (
 	"github.com/wdnb/gene/gecko"

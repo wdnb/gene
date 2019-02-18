@@ -1,76 +1,56 @@
 package api
 
 import (
-	"fmt"
+	"encoding/json"
 	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/wdnb/gene/blockchain"
 	"github.com/wdnb/gene/gecko"
+	"github.com/wdnb/gene/utils"
+	"io/ioutil"
+	"log"
 	"net/http"
 )
 
-
-
-
-
-//func Test(c *gin.Context)  {
-//	var msg gecko.BMI
-//
-//	if c.BindJSON(&msg) == nil {
-//		fmt.Println(msg)
-//		//message := c.Param("Sex")//获取url
-//		c.JSON(http.StatusOK, gin.H{
-//			"message":	msg.Height,
-//		})
-//	} else {
-//		c.JSON(http.StatusBadRequest, gin.H{
-//			"err_no":     "4001",
-//			"message":    "request's params wrong!",
-//			//"timestamp":  time.Now().Format(_timestamp_format),
-//		})
-//	}
-//}
-
-func GeckoList(c *gin.Context) {
-	fmt.Println("showgecko")
-	return
-}
-
 func LeopardCreate(c *gin.Context)  {
 	var msg gecko.Gecko
-	if c.BindJSON(&msg) != nil {
-		response(c,http.StatusBadRequest,"request's params wrong!")
+	//bindjson不能完整解析gene呀不知道为啥吖 只能自己动手了呀
+	gene,_:=(ioutil.ReadAll(c.Request.Body))
+
+	if err := json.Unmarshal(gene, &msg); err != nil {
+		response(c,http.StatusBadRequest,err.Error())
 		return
 	}
 	if _,err := govalidator.ValidateStruct(msg); err!=nil{
 		response(c,http.StatusBadRequest,err.Error())
 		return
 	}
-	//getCurrentDirectory()
-	//file, _ := exec.LookPath(os.Args[0])
-	//path, _ := filepath.Abs(file)
-	//println(path)
 	//在线账户模式下根据id获取用户钱包
 	//离线账户读取本地钱包
-	blockchain.EntryGecko("19pUjZXFySwcYSkzy3o2E7hyKTmd6zTNnq","3000",true,msg)
+	uname := GetTokenUserName(c)
+	udb := NewUserDB()
+	address,err:=udb.GetAddress(uname)
+	if nil!=err {
+		log.Panic(err)
+	}
+	//address将用来签名PubKeyHash
+	//钱包文件名格式 wallet_uname
+	blockchain.EntryGecko(string(address),uname,true,msg)
 	response(c,http.StatusOK,msg)
 	return
 }
 
 func LeopardRetrieve(c *gin.Context)  {
-	p:=blockchain.PrintGecko("3000")
+	uname := GetTokenUserName(c)
+	p:=blockchain.PrintGecko(uname)
 	response(c,http.StatusOK,p)
 }
 
-func Leopard()  {
-
-}
-
 func BaseGeneLoad(c *gin.Context)  {
-
-	response(c,http.StatusOK,"")
+	var gene  []byte
+	gene = utils.ReadInFile("./db/gene.json")
+	responseWithRaw(c.Writer,http.StatusOK,gene)
 }
-
 
 func BMIRetrieve(c *gin.Context)  {
 	return
@@ -101,7 +81,6 @@ func DeleteEgg()  {
 }
 
 func BMICreate(c *gin.Context)  {
-	//fmt.Println("ssss")
 	var msg gecko.BMI
 	if c.BindJSON(&msg) != nil {
 		response(c,http.StatusBadRequest,"request's params wrong!")

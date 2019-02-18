@@ -49,7 +49,7 @@ func NewGeckoTransaction(w *wallet.Wallet, to string, amount int, UTXOSet *UTXOS
 
 func NewGecko(w *wallet.Wallet,msg gecko.Gecko) *gecko.Gecko{
 	from := fmt.Sprintf("%s", w.GetAddress())
-	fmt.Println(from)
+	//fmt.Println(from)
 	//bmi:=gecko.BMI{}
 	//egg:=gecko.Egg{}
 	//reproduction:=gecko.Reproduction{time.Now().Unix(),}
@@ -62,7 +62,7 @@ func NewGecko(w *wallet.Wallet,msg gecko.Gecko) *gecko.Gecko{
 	//death:=time.Now()
 	//fmt.Println(death)
 	txout:=NewTXOutput(1,from)
-	geckos:=gecko.Gecko{msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}
+	geckos:=gecko.Gecko{msg.Gene,msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}
 
 	return  &geckos
 }

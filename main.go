@@ -59,6 +59,8 @@ var mutex = &sync.Mutex{}
 // validators keeps track of open validators and balances
 var validators = make(map[string]int)
 
+
+
 func main() {
 
 	err := godotenv.Load()
@@ -121,11 +123,9 @@ func handleHttp(httpPort string) error{
 	v1 := r.Group("/api/v1")
 	v1.POST("/user/register", api.Register)
 	v1.POST("/user/login", api.Login)
-	v1.POST("/user/inquire", api.Inquire)
 	v1.Use(api.TokenMiddleware())
 	{
-		//v1.POST("/", api.Test)
-		//v1.POST("/user/geckolist", api.GeckoList)
+		v1.POST("/user/inquire", api.Inquire)
 		l := v1.Group("leopard")
 		l.POST("/create", api.LeopardCreate)
 		l.POST("/retrieve", api.LeopardRetrieve)
@@ -192,7 +192,7 @@ func handleGetBlockchain(w http.ResponseWriter, r *http.Request) {
 // takes JSON payload as an input for heart rate (gecko)
 func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var msg gecko.Message
+	var msg gecko.Gecko
 
 	decoder := json.NewDecoder(r.Body)
 	if err := decoder.Decode(&msg); err != nil {
@@ -223,7 +223,7 @@ func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
 //	Msg   string    `json:"msg"`
 //}
 
-func dataVerification(msg gecko.Message)  interface{}{
+func dataVerification(msg gecko.Gecko)  interface{}{
 	//if msg.Hash=="" {
 	//	//err := fmt.Errorf("%s", "")
 	//	//var err error = errors.New("哈希呢")

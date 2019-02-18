@@ -11,7 +11,6 @@ import (
 	"github.com/boltdb/bolt"
 )
 
-//const dbFile = "D:/workspace/go/src/github.com/wdnb/gene/db/blockchain_%s.db"
 const dbFile = "./db/blockchain_%s.db"
 const blocksBucket = "blocks"
 const genesisCoinbaseData = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
@@ -24,6 +23,7 @@ type Blockchain struct {
 
 // CreateBlockchain creates a new blockchain DB
 func CreateBlockchain(address, nodeID string) *Blockchain {
+
 	dbFile := fmt.Sprintf(dbFile, nodeID)
 	if dbExists(dbFile) {
 		fmt.Println("Blockchain already exists.")
@@ -33,7 +33,7 @@ func CreateBlockchain(address, nodeID string) *Blockchain {
 	var tip []byte
 
 	cbtx := NewCoinbaseTX(address, genesisCoinbaseData)
-	genesis := NewGenesisBlock(cbtx,nil)
+	genesis := NewGenesisBlock(cbtx)
 
 	db, err := bolt.Open(dbFile, 0600, nil)
 	if err != nil {

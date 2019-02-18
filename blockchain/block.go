@@ -21,12 +21,16 @@ type Block struct {
 
 // NewBlock creates and returns Block
 func NewBlock(transactions []*Transaction,gecko []*gecko.Gecko, prevBlockHash []byte, height int) *Block {
+
 	block := &Block{time.Now().Unix(),gecko, transactions,prevBlockHash, []byte{}, 0, height}
 	//禁用pow
+	//fmt.Println(block)
 	pow := NewProofOfWork(block)
 	nonce, hash := pow.Run()
+	//os.Exit(22222222)
 	block.Hash = hash[:]
 	block.Nonce = nonce
+
 	//var hash [32]byte
 
 	//fmt.Println(string(prevBlockHash))
@@ -36,15 +40,15 @@ func NewBlock(transactions []*Transaction,gecko []*gecko.Gecko, prevBlockHash []
 }
 
 // NewGenesisBlock creates and returns genesis Block
-func NewGenesisBlock(coinbase *Transaction,gecko []*gecko.Gecko) *Block {
-	return NewBlock([]*Transaction{coinbase},gecko, []byte{}, 0)
+func NewGenesisBlock(coinbase *Transaction) *Block {
+	return NewBlock([]*Transaction{coinbase},nil, []byte{}, 0)
 }
 
 // HashTransactions returns a hash of the transactions in the block
 func (b *Block) HashTransactions() []byte {
 	var transactions [][]byte
 
-	for _, tx := range b.Gecko {
+	for _, tx := range b.Transactions {
 		transactions = append(transactions, tx.Serialize())
 	}
 	mTree := NewMerkleTree(transactions)

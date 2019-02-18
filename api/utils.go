@@ -2,13 +2,31 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
+//
+//type Raw struct {
+//	Code int         `json:"code"`
+//	Message  []byte      `json:"message"`
+//}
+
+//var Raw map[string]interface{}
+
 func response(c *gin.Context,code int,message interface{})  {
 	c.JSON(http.StatusOK, gin.H{
 		"code":	code,
 		"message":message,
 	})
+}
+
+func responseWithRaw(w http.ResponseWriter, code int, payload []byte)  {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+	_,err:=w.Write(payload)
+	if nil!=err {
+		log.Panic(err)
+	}
 }
 
 //type Response struct {

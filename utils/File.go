@@ -7,37 +7,12 @@ import (
 )
 
 type BaseGene struct {
-//	id: int,
-//	"tree": {
-//	"id": 1,
-//	"desc": "预设基因",
-//	"level": "level1",
-//	"logo": null,
-//	"popular": null,
-//	"nodes": [{
-//	"id": 1,
-//	"tree": {
-//	"id": 1,
-//	"desc": "牛奶粉",
-//	"level": "level2",
-//	"logo": "",
-//	"popular": null,
-//	"nodes": [{
-//	"id": 157,
-//	"tree": {
-//	"id": 157,
-//	"desc": "超级雪花恶魔白酒图片 设置url点击进入详细说明",
-//	"desc2": "SSDB",
-//	"logo": ""
-//}
-//},
-//]
-//}
-//}]
-//}
-
+	s map[string]map[string]bool
 }
 
+type nodes struct {
+	s map[string]map[string]bool
+}
 type JsonStruct struct {
 }
 
@@ -56,4 +31,13 @@ func (jst *JsonStruct) ReadInJson(filename string, v interface{}) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func ReadInFile(filename string) []byte{
+	//ReadFile函数会读取文件的全部内容，并将结果以[]byte类型返回
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return data
 }
