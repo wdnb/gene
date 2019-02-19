@@ -35,12 +35,19 @@ func LeopardCreate(c *gin.Context)  {
 	}
 	//address将用来签名PubKeyHash
 	//钱包文件名格式 wallet_uname
+	//需要支持批量添加gecko
 	blockchain.EntryGecko(string(address),uname,true,&msg)
 	response(c,http.StatusOK,msg)
 	return
 }
 
 func LeopardRetrieve(c *gin.Context)  {
+	uname := GetTokenUserName(c)
+	t:=blockchain.GeckoList(uname)
+	response(c,http.StatusOK,t)
+}
+
+func LeopardPrintChain(c *gin.Context)  {
 	uname := GetTokenUserName(c)
 	p:=blockchain.PrintGecko(uname)
 	response(c,http.StatusOK,p)

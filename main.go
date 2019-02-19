@@ -128,6 +128,7 @@ func handleHttp(httpPort string) error{
 		v1.POST("/user/inquire", api.Inquire)
 		l := v1.Group("leopard")
 		l.POST("/create", api.LeopardCreate)
+		l.POST("/printchain", api.LeopardPrintChain)
 		l.POST("/retrieve", api.LeopardRetrieve)
 		l.POST("/basegene", api.BaseGeneLoad)
 

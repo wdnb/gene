@@ -10,7 +10,7 @@ import (
 	"os"
 	"github.com/boltdb/bolt"
 )
-
+//chain
 const dbFile = "./db/blockchain_%s.db"
 const blocksBucket = "blocks"
 const genesisCoinbaseData = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
@@ -221,6 +221,24 @@ func (bc *Blockchain) GetBestHeight() int {
 	}
 
 	return lastBlock.Height
+}
+//返回最新的区块
+func (bc *Blockchain) GetLastestBlock()  Block{
+	var lastBlock Block
+
+	err := bc.db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte(blocksBucket))
+		lastHash := b.Get([]byte("l"))
+		blockData := b.Get(lastHash)
+		lastBlock = *DeserializeBlock(blockData)
+
+		return nil
+	})
+	if err != nil {
+		log.Panic(err)
+	}
+
+	return lastBlock
 }
 
 // GetBlock finds a block by its hash and returns it

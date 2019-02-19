@@ -7,17 +7,17 @@ import (
 )
 
 type BMI struct {
-	Weight		int `valid:"range(0|1000)"`
-	Height		int `valid:"range(0|1000)"`
+	//Weight		int `valid:"range(0|1000)"`
+	//Height		int `valid:"range(0|1000)"`
 	//Unique      string `valid:"required"`
 }
 
 
 
 type Egg struct {
-	Father string
-	Mother string
-	Temperature []string
+	//Father string
+	//Mother string
+	//Temperature []string
 	//Birth    int64
 	//Death    int64
 	//Unique      string `valid:"required"`

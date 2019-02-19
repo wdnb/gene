@@ -41,7 +41,7 @@ func NewBlock(transactions []*Transaction,gecko []*gecko.Gecko, prevBlockHash []
 
 // NewGenesisBlock creates and returns genesis Block
 func NewGenesisBlock(coinbase *Transaction) *Block {
-	return NewBlock([]*Transaction{coinbase},nil, []byte{}, 0)
+	return NewBlock([]*Transaction{coinbase},[]*gecko.Gecko{{nil,0, struct{}{}, struct{}{},"神之壁虎","",0,0,nil}}, []byte{}, 0)
 }
 
 // HashTransactions returns a hash of the transactions in the block

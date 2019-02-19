@@ -3,12 +3,12 @@ package blockchain
 import (
 	"encoding/hex"
 	"fmt"
-	"github.com/boltdb/bolt"
 	"github.com/wdnb/gene/gecko"
 	"github.com/wdnb/gene/wallet"
 	"log"
 )
 
+//Transaction
 func NewGeckoTransaction(w *wallet.Wallet, to string, amount int, UTXOSet *UTXOSet) *Transaction {
 	var inputs []TXInput
 	var outputs []TXOutput
@@ -50,24 +50,10 @@ func NewGeckoTransaction(w *wallet.Wallet, to string, amount int, UTXOSet *UTXOS
 
 func (bc *Blockchain)NewGecko(w *wallet.Wallet,msg *gecko.Gecko) *gecko.Gecko{
 	from := fmt.Sprintf("%s", w.GetAddress())
-	//区块高度作为gecko唯一编号
-	var lastHeight int
-	var lastHash []byte
-	err := bc.db.View(func(tx *bolt.Tx) error {
-		b := tx.Bucket([]byte(blocksBucket))
-		lastHash = b.Get([]byte("l"))
 
-		blockData := b.Get(lastHash)
-		block := DeserializeBlock(blockData)
+	g:=bc.GetLastestBlock().Gecko[len(bc.GetLastestBlock().Gecko)-1]
 
-		lastHeight = block.Height
-
-		return nil
-	})
-	if err != nil {
-		log.Panic(err)
-	}
-	msg.Serial = lastHeight+1;
+	msg.Serial = g.Serial+1;
 
 	txout:=NewTXOutput(1,from)
 	geckos:=gecko.Gecko{msg.Gene,msg.Serial,msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}

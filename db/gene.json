@@ -1,0 +1,274 @@
+[{
+  "id": 1,
+  "tree": {
+    "desc": "预设基因",
+    "nodes": [
+      {
+        "desc": "川普阳光",
+        "desc2": "TSUN",
+        "logo": ""
+      },
+      {
+        "id": 1,
+        "desc": "川普超级暴风雪",
+        "desc2": "BB",
+        "logo": ""
+      },
+      {
+        "id": 2,
+        "desc": "贝尔超级暴风雪",
+        "desc2": "BB",
+        "logo": ""
+      },
+      {
+        "id": 3,
+        "desc": "雨水超级暴风雪",
+        "desc2": "BB",
+        "logo": ""
+      },
+      {
+        "id": 4,
+        "desc": "雪花川普白化",
+        "desc2": "SA",
+        "logo": ""
+      },
+      {
+        "id": 5,
+        "desc": "超级雪花川普白化",
+        "desc2": "SSA",
+        "logo": ""
+      },
+      {
+        "id": 6,
+        "desc": "AP暴龙",
+        "desc2": "AP",
+        "logo": ""
+      },
+      {
+        "id": 7,
+        "desc": "红眼暴龙",
+        "desc2": "RA",
+        "logo": ""
+      },
+      {
+        "id": 8,
+        "desc": "雪花红眼暴龙",
+        "desc2": "SRA",
+        "logo": ""
+      },
+      {
+        "id": 9,
+        "desc": "超级雪花红眼暴龙",
+        "desc2": "SSRA",
+        "logo": ""
+      },
+      {
+        "id": 10,
+        "desc": "恶魔白酒",
+        "desc2": "DB",
+        "logo": ""
+      },
+      {
+        "id": 11,
+        "desc": "雪花恶魔白酒",
+        "desc2": "SDB",
+        "logo": ""
+      },
+      {
+        "id": 12,
+        "desc": "超级雪花恶魔白酒图片 设置url点击进入详细说明",
+        "desc2": "SSDB",
+        "logo": ""
+      },
+      {
+        "id": 13,
+        "desc": "雪花贝尔白化",
+        "desc2": "SB",
+        "logo": ""
+      },
+      {
+        "id": 14,
+        "desc": "超级雪花贝尔白化",
+        "desc2": "SSB",
+        "logo": ""
+      },
+      {
+        "id": 15,
+        "desc": "雷达",
+        "desc2": "RD",
+        "logo": ""
+      },
+      {
+        "id": 16,
+        "desc": "雪花雷达",
+        "desc2": "SRD",
+        "logo": ""
+      },
+      {
+        "id": 17,
+        "desc": "超级雪花雷达",
+        "desc2": "SSRD",
+        "logo": ""
+      },
+      {
+        "id": 18,
+        "desc": "白骑士",
+        "desc2": "WK",
+        "logo": ""
+      },
+      {
+        "id": 19,
+        "desc": "雪花白骑士",
+        "desc2": "SWK",
+        "logo": ""
+      },
+      {
+        "id": 20,
+        "desc": "超级雪花白骑士",
+        "desc2": "SSWK",
+        "logo": ""
+      },
+      {
+        "id": 21,
+        "desc": "台风",
+        "desc2": "TY",
+        "logo": ""
+      },
+      {
+        "id": 22,
+        "desc": "雪花台风",
+        "desc2": "STY",
+        "logo": ""
+      },
+      {
+        "id": 23,
+        "desc": "超级雪花台风",
+        "desc2": "SSTY",
+        "logo": ""
+      },
+      {
+        "id": 24,
+        "desc": "旋风",
+        "desc2": "CY",
+        "logo": ""
+      },
+      {
+        "id": 25,
+        "desc": "雪花旋风",
+        "desc2": "SCY",
+        "logo": ""
+      },
+      {
+        "id": 26,
+        "desc": "超级雪花旋风",
+        "desc2": "SSCY",
+        "logo": ""
+      }
+    ]
+  }
+},
+  {
+    "id": 2,
+    "tree": {
+      "desc": "显性基因",
+      "nodes": [{
+        "id": 22,
+        "desc": "柠檬霜",
+        "desc2": "NM",
+        "logo": ""
+      }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "tree": {
+      "desc": "隐性基因",
+      "nodes": [
+        {
+          "desc": "川普白化",
+          "desc2": "TREMPER",
+          "logo": ""
+        },
+        {
+          "desc": "隐川普白化",
+          "desc2": "HTREMPER",
+          "logo": ""
+        },
+        {
+          "desc": "贝尔白化",
+          "desc2": "BELL",
+          "logo": ""
+        },
+        {
+          "desc": "隐贝尔白化",
+          "desc2": "HBELL",
+          "logo": ""
+        },
+        {
+          "desc": "雨水白化",
+          "desc2": "RAINWATER",
+          "logo": ""
+        },
+        {
+          "desc": "隐雨水白化",
+          "desc2": "HRAINWATER",
+          "logo": ""
+        },
+        {
+          "desc": "日蚀",
+          "desc2": "Eclipse",
+          "logo": ""
+        },
+        {
+          "desc": "隐日蚀",
+          "desc2": "HEclipse",
+          "logo": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "tree": {
+      "desc": "多基因",
+      "nodes": [
+        {
+          "desc": "黄",
+          "desc2": "YELLOW",
+          "logo": ""
+        },
+        {
+          "desc": "红",
+          "desc2": "RED",
+          "logo": ""
+        },
+        {
+          "desc": "黑",
+          "desc2": "BLACK",
+          "logo": ""
+        },
+        {
+          "desc": "电橘",
+          "desc2": "ET",
+          "logo": ""
+        },
+        {
+          "desc": "蜜桔",
+          "desc2": "MT",
+          "logo": ""
+        },
+        {
+          "desc": "血系",
+          "desc2": "BLOOD",
+          "logo": ""
+        },
+        {
+          "desc": "萝卜尾",
+          "desc2": "CT",
+          "logo": ""
+        }
+      ]
+    }
+  }
+]
