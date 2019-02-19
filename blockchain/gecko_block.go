@@ -20,7 +20,7 @@ type Print struct {
 	Transactions  []*Transaction
 }
 
-func EntryGecko(from,nodeID string, mineNow bool,msg gecko.Gecko) {
+func EntryGecko(from,nodeID string, mineNow bool,msg *gecko.Gecko) {
 	if !wallet.ValidateAddress(from) {
 		log.Panic("ERROR: Sender address is not valid")
 	}
@@ -37,7 +37,7 @@ func EntryGecko(from,nodeID string, mineNow bool,msg gecko.Gecko) {
 	w := wallets.GetWallet(from)
 
 	//tx := NewUTXOTransaction(&w, to, amount, &UTXOSet)
-	gtx :=NewGecko(&w,msg)//填充结构体
+	gtx :=bc.NewGecko(&w,msg)//填充结构体
 	//gecko获取方式分为转账和自己创建
 	if mineNow {
 		cbTx := NewCoinbaseTX(from, "")

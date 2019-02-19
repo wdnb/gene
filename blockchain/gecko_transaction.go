@@ -3,6 +3,7 @@ package blockchain
 import (
 	"encoding/hex"
 	"fmt"
+	"github.com/boltdb/bolt"
 	"github.com/wdnb/gene/gecko"
 	"github.com/wdnb/gene/wallet"
 	"log"
@@ -47,46 +48,29 @@ func NewGeckoTransaction(w *wallet.Wallet, to string, amount int, UTXOSet *UTXOS
 	return &tx
 }
 
-func NewGecko(w *wallet.Wallet,msg gecko.Gecko) *gecko.Gecko{
+func (bc *Blockchain)NewGecko(w *wallet.Wallet,msg *gecko.Gecko) *gecko.Gecko{
 	from := fmt.Sprintf("%s", w.GetAddress())
-	//fmt.Println(from)
-	//bmi:=gecko.BMI{}
-	//egg:=gecko.Egg{}
-	//reproduction:=gecko.Reproduction{time.Now().Unix(),}
-	//care:=gecko.Care{time.Now().Unix()}
-	//name:="First generation"
-	//sex:="man"
-	//geng:=[]{"s","f"}
-	//birth:=time.Now()
-	//var death int64
-	//death:=time.Now()
-	//fmt.Println(death)
+	//区块高度作为gecko唯一编号
+	var lastHeight int
+	var lastHash []byte
+	err := bc.db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte(blocksBucket))
+		lastHash = b.Get([]byte("l"))
+
+		blockData := b.Get(lastHash)
+		block := DeserializeBlock(blockData)
+
+		lastHeight = block.Height
+
+		return nil
+	})
+	if err != nil {
+		log.Panic(err)
+	}
+	msg.Serial = lastHeight+1;
+
 	txout:=NewTXOutput(1,from)
-	geckos:=gecko.Gecko{msg.Gene,msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}
+	geckos:=gecko.Gecko{msg.Gene,msg.Serial,msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}
 
 	return  &geckos
 }
-
-//func (tx Transaction) String() string {
-//	var lines []string
-//	//fmt.Println(tx)
-//
-//	lines = append(lines, fmt.Sprintf("--- Transaction %x:", tx.ID))
-//
-//	for i, input := range tx.Vin {
-//
-//		lines = append(lines, fmt.Sprintf("     Input %d:", i))
-//		lines = append(lines, fmt.Sprintf("       TXID:      %x", input.Txid))
-//		lines = append(lines, fmt.Sprintf("       Out:       %d", input.Vout))
-//		lines = append(lines, fmt.Sprintf("       Signature: %x", input.Signature))
-//		lines = append(lines, fmt.Sprintf("       PubKey:    %x", input.PubKey))
-//	}
-//
-//	for i, output := range tx.Vout {
-//		lines = append(lines, fmt.Sprintf("     Output %d:", i))
-//		lines = append(lines, fmt.Sprintf("       Value:  %d", output.Value))
-//		lines = append(lines, fmt.Sprintf("       Script: %x", output.PubKeyHash))
-//	}
-//
-//	return strings.Join(lines, "\n")
-//}

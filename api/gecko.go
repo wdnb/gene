@@ -35,7 +35,7 @@ func LeopardCreate(c *gin.Context)  {
 	}
 	//address将用来签名PubKeyHash
 	//钱包文件名格式 wallet_uname
-	blockchain.EntryGecko(string(address),uname,true,msg)
+	blockchain.EntryGecko(string(address),uname,true,&msg)
 	response(c,http.StatusOK,msg)
 	return
 }

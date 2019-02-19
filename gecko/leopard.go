@@ -38,6 +38,7 @@ type Care struct {
 
 type Gecko struct {
 	Gene map[string]interface{}
+	Serial int
 	BMI
 	Egg
 	//Reproduction
