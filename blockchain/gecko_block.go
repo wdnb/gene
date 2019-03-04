@@ -17,6 +17,25 @@ type Print struct {
 	Transactions  []*Transaction
 }
 
+type List struct {
+	Node []Node
+}
+
+type Node struct {
+	title string
+	Base []Base
+}
+
+type Base struct {
+	Gene map[string]interface{}
+	Serial int
+	Name		string
+}
+
+//type title struct {
+//	Group string
+//}
+
 func EntryGecko(from,nodeID string, mineNow bool,msg *gecko.Gecko) {
 	if !wallet.ValidateAddress(from) {
 		log.Panic("ERROR: Sender address is not valid")
@@ -90,14 +109,44 @@ func PrintGecko(nodeID string)  []Print{
 	return p
 }
 //小壁虎列表
-func GeckoList(nodeID string)  []*gecko.Gecko{
+func GeckoList(nodeID string)  interface{}{
 	p:= PrintGecko(nodeID)
 	var tmp []*gecko.Gecko
+	var tmpbb []Base
+	var tmpll []Node
+	tmpG := make(map[string]bool)//用于记录group字段
+	//tmpL := make(map[string]map[string]string)
+	//s := []tmpL
+
 	for _,value:=range p {
 		for _,g:=range value.Gecko {
+			//已有group字段 添加base
+			//无group字段 添加List 注册group
+			_, ok := tmpG[g.Group]
+			if ok{
+				tmpbb = append(tmpbb,Base{g.Gene,g.Serial,g.Name})
+				//tmpll = append(tmpll,List{g.Name,tmpbb})
+				fmt.Println("base")
+				//tmpL = ["b"]["f"]["s"]
+			}else {
+				tmpll = append(tmpll,Node{g.Name,tmpbb})
+				//List{g.Group}
+				fmt.Println("list")
+			}
 			tmp = append(tmp,g)
+			//fmt.Println(g.Group)
+			tmpG[g.Group] = true
+
 		}
 	}
+
+	//fmt.Println(tmpbb)
+	//fmt.Println(tmpll)
+	//fmt.Println(tmpG)
 	return tmp
 }
 
+//填充list结构体
+func ListInit(g interface{})  interface{}{
+	return nil
+}

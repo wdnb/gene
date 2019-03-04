@@ -1,4 +1,4 @@
 .idea
 *.exe
 db/*
-!db/gene.json
+!db/*.json

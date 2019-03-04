@@ -39,6 +39,7 @@ type Care struct {
 type Gecko struct {
 	Gene map[string]interface{}
 	Serial int
+	Group string
 	BMI
 	Egg
 	//Reproduction
@@ -50,6 +51,7 @@ type Gecko struct {
 	PubKeyHash []byte
 	//Unique      string `valid:"required"`
 }
+
 type G struct {
 	Gene map[string]interface{}
 

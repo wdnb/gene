@@ -56,7 +56,7 @@ func (bc *Blockchain)NewGecko(w *wallet.Wallet,msg *gecko.Gecko) *gecko.Gecko{
 	msg.Serial = g.Serial+1;
 
 	txout:=NewTXOutput(1,from)
-	geckos:=gecko.Gecko{msg.Gene,msg.Serial,msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}
+	geckos:=gecko.Gecko{msg.Gene,msg.Serial,msg.Group,msg.BMI,msg.Egg,msg.Name,msg.Sex,msg.Birth,msg.Death,txout.PubKeyHash}
 
 	return  &geckos
 }

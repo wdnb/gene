@@ -43,3 +43,4 @@ func (jst *JsonStruct) Load(filename string, v interface{}) {
 		log.Fatal(err)
 	}
 }
+
